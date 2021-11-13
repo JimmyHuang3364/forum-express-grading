@@ -8,6 +8,10 @@ const db = require('./models') // 引入資料庫
 const app = express()
 const port = process.env.PORT || 3000
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 
 app.use(express.urlencoded({ extended: true }))
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' })) // Handlebars 註冊樣板引擎
