@@ -14,7 +14,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 app.use(express.urlencoded({ extended: true }))
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' })) // Handlebars 註冊樣板引擎
+
+app.engine('hbs', exphbs({
+  defaultLayout: 'main',
+  extname: '.hbs',
+  helpers: require('./config/handlebars-helpers')
+}))
+
 app.set('view engine', 'hbs') // 設定使用 Handlebars 做為樣板引擎
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }))
 app.use(passport.initialize())
