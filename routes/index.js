@@ -51,8 +51,8 @@ module.exports = (app, passport) => {
 
   // restaurant
   app.get('/restaurants/feeds', authenticated, restController.getFeeds)
-  app.get('/restaurants/:id', authenticated, restController.getRestaurant)
   app.get('/restaurants/:id/dashboard', authenticated, restController.getDashBoard)
+  app.get('/restaurants/:id', authenticated, restController.getRestaurant)
 
   // favorite
   app.post('/favorite/:restaurantId', authenticated, userController.addFavorite)
