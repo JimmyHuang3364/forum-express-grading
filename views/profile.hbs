@@ -23,18 +23,11 @@
       已評論餐廳
     </div>
     <div class="card-body">
-      <a href='/users/{{user.id}}/edit'>
-        <img src="{{user.image}}" class="mx-2" style="max-height: 60px;" alt="...">
+      {{#each user.Comments}}
+      <a href='/restaurants/{{this.RestaurantId}}'>
+        <img src="{{this.Restaurant.image}}" class="mx-2 mb-2" style="max-height: 60px;" title="{{this.Restaurant.name}}" alt="...">
       </a>
-      <a href='/users/{{user.id}}/edit'>
-        <img src="{{user.image}}" class="mx-2" style="max-height: 60px;" alt="...">
-      </a>
-      <a href='/users/{{user.id}}/edit'>
-        <img src="{{user.image}}" class="mx-2" style="max-height: 60px;" alt="...">
-      </a>
-      <a href='/users/{{user.id}}/edit'>
-        <img src="{{user.image}}" class="mx-2" style="max-height: 60px;" alt="...">
-      </a>
+      {{/each}}
     </div>
   </div>
 
