@@ -92,7 +92,10 @@ const restController = {
   getDashBoard: (req, res) => {
     return Restaurant.findByPk(req.params.id, { include: [Comment, Category] })
       .then((restaurant => {
-        return res.render('dashboard', { restaurant: restaurant.toJSON() })
+        restaurant.update({ viewCounts: restaurant.viewCounts + 1 })
+          .then((restaurant) => {
+            return res.render('dashboard', { restaurant: restaurant.toJSON() })
+          })
       }))
   }
 }
