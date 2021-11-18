@@ -58,12 +58,17 @@ const restController = {
     return Restaurant.findByPk(req.params.id, {
       include: [
         Category,
-
+        { model: User, as: 'FavoritedUsers' }, // 加入關聯資料
+        { model: User, as: 'LikedUsers' },
         { model: Comment, include: [User] }
       ]
     }).then(restaurant => {
+      const isFavorited = restaurant.FavoritedUsers.map(d => d.id).includes(req.user.id) // 找出收藏此餐廳的 user
+      const isLiked = restaurant.LikedUsers.map(d => d.id).includes(req.user.id)
       return res.render('restaurant', {
-        restaurant: restaurant.toJSON()
+        restaurant: restaurant.toJSON(),
+        isFavorited: isFavorited,
+        isLiked: isLiked
       })
     })
   },
