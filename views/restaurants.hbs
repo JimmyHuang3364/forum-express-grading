@@ -32,7 +32,7 @@
           </a>
         </p>
         <span class="badge badge-secondary">{{this.categoryName}}</span>
-        <p class="card-text">{{this.description}}</p>
+        <p class="card-text" style="height: 50px;">{{this.description}}</p>
         <div class="d-flex justify-content-start">
           {{#if this.isFavorited }}
           <form action="/favorite/{{this.id}}?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">移除最愛</button></form>
