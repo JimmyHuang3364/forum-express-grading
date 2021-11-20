@@ -105,7 +105,12 @@ const restController = {
             return res.render('dashboard', { restaurant: restaurant.toJSON() })
           })
       }))
-  }
+  },
+
+  getTop10PopularRestaurnat: (req, res) => {
+
+    return res.render('top')
+  },
 }
 
 module.exports = restController
