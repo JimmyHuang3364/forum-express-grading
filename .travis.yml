@@ -1,6 +1,10 @@
 language: node_js
 node_js:
+<<<<<<< HEAD
   - "14"
+=======
+    - "14"
+>>>>>>> origin/R05-test
 
 services:
   - mysql
