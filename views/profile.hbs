@@ -18,16 +18,67 @@
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-header">
-      已評論餐廳
+
+
+  <div class="row mb-4">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          {{user.Followings.amount}} 追隨中
+        </div>
+        <div class="card-body">
+          {{#each user.Followings}}
+          <a href='/users/{{this.id}}'>
+            <img src="{{this.image}}" class="mx-1 mb-2" style="max-height: 60px;" title="{{this.name}}" alt="...">
+          </a>
+          {{/each}}
+        </div>
+      </div>
     </div>
-    <div class="card-body">
-      {{#each user.Comments}}
-      <a href='/restaurants/{{this.RestaurantId}}'>
-        <img src="{{this.Restaurant.image}}" class="mx-2 mb-2" style="max-height: 60px;" title="{{this.Restaurant.name}}" alt="...">
-      </a>
-      {{/each}}
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header">
+          {{user.Comments.amount}} 已評論餐廳
+        </div>
+        <div class="card-body">
+          {{#each user.Comments}}
+          <a href='/restaurants/{{this.RestaurantId}}'>
+            <img src="{{this.Restaurant.image}}" class="mx-1 mb-2" style="max-height: 60px;" title="{{this.Restaurant.name}}" alt="...">
+          </a>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          {{user.Followers.amount}} 位粉絲
+        </div>
+        <div class="card-body">
+          {{#each user.Followers}}
+          <a href='/users/{{this.id}}'>
+            <img src="{{this.image}}" class="mx-1 mb-2" style="max-height: 60px;" title="{{this.name}}" alt="...">
+          </a>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header">
+          {{user.FavoritedRestaurants.amount}} 口袋名單
+        </div>
+        <div class="card-body">
+          {{#each user.FavoritedRestaurants}}
+          <a href='/restaurants/{{this.id}}'>
+            <img src="{{this.image}}" class="mx-1 mb-2" style="max-height: 60px;" title="{{this.name}}" alt="...">
+          </a>
+          {{/each}}
+        </div>
+      </div>
     </div>
   </div>
 
