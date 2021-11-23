@@ -1,4 +1,5 @@
 const db = require('../models')
+const adminService = require('../services/adminService.js')
 const Restaurant = db.Restaurant
 const User = db.User
 const Category = db.Category
@@ -8,13 +9,8 @@ const IMGUR_CLIENT_ID = process.env.IMGUR_CLIENT_ID
 
 const adminController = {
   getRestaurants: (req, res) => {
-    return Restaurant.findAll({
-      raw: true,
-      nest: true,
-      include: [Category]
-    }).then(restaurants => {
-      console.log(restaurants) // 加入 console 觀察資料的變化
-      return res.render('admin/restaurants', { restaurants: restaurants })
+    adminService.getRestaurants(req, res, (data) => {
+      return res.render('admin/restaurants', data)
     })
   },
 
