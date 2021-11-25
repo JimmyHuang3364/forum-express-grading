@@ -14,6 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 app.engine('hbs', exphbs({
   defaultLayout: 'main',
